@@ -2,7 +2,9 @@ package com.yanggang.reactor;
 
 import reactor.core.publisher.Flux;
 
-public class Operator {
+import java.time.Duration;
+
+public class Operator1 {
     // map
     public Flux<Integer> fluxMap() {
         return Flux.range(1, 5)
@@ -25,10 +27,11 @@ public class Operator {
                 .log();
     }
 
-    // flatmap
+    // flatMap : 1:N 관계로 데이터 스트림을 다시 만듦 (비동적으로 처리)
     public Flux<Integer> fluxFlatMap() {
         return Flux.range(1, 10)
-                .flatMap(i -> Flux.range(i * 10, 10))
+                .flatMap(i -> Flux.range(i * 10, 10)
+                        .delayElements(Duration.ofMillis(100)))
                 .log();
     }
 

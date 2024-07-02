@@ -3,41 +3,41 @@ package com.yanggang.reactor;
 import org.junit.jupiter.api.Test;
 import reactor.test.StepVerifier;
 
-class OperatorTest {
+class Operator1Test {
 
-    private Operator operator = new Operator();
+    private Operator1 operator1 = new Operator1();
 
     @Test
     void fluxMap() {
-        StepVerifier.create(operator.fluxMap())
+        StepVerifier.create(operator1.fluxMap())
                 .expectNext(2, 4, 6, 8, 10)
                 .verifyComplete();
     }
 
     @Test
     void fluxFilter() {
-        StepVerifier.create(operator.fluxFilter())
+        StepVerifier.create(operator1.fluxFilter())
                 .expectNext(6, 7, 8, 9, 10)
                 .verifyComplete();
     }
 
     @Test
     void fluxFilterTake() {
-        StepVerifier.create(operator.fluxFilterTake())
+        StepVerifier.create(operator1.fluxFilterTake())
                 .expectNext(6, 7, 8)
                 .verifyComplete();
     }
 
     @Test
     void fluxFlatMap() {
-        StepVerifier.create(operator.fluxFlatMap())
+        StepVerifier.create(operator1.fluxFlatMap())
                 .expectNextCount(100)
                 .verifyComplete();
     }
 
     @Test
     void fluxFlatMapGuGuDan() {
-        StepVerifier.create(operator.fluxFlatMapGuGuDan())
+        StepVerifier.create(operator1.fluxFlatMapGuGuDan())
                 .expectNextCount(81)
                 .verifyComplete();
     }
